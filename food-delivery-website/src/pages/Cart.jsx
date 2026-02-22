@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaTrash } from "react-icons/fa";
 import { useCart } from "../hooks/useCart";
@@ -49,26 +49,37 @@ const Cart = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div className="min-h-screen bg-gray-50 ">
+      {/* Header */}
+      <div className="bg-white shadow-md px-6 py-4 flex items-center relative border-b border-gray-200">
         <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-gray-600 hover:text-red-500 mb-4"
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2 text-gray-700 hover:text-red-500 
+               bg-gray-100 hover:bg-red-50 px-3 py-2 rounded-lg 
+               transition font-medium shadow-sm"
         >
-          <FaArrowLeft /> Back
+          <FaArrowLeft className="text-base" />
+          Back
         </button>
 
-        <h1 className="text-2xl sm:text-3xl font-bold mb-6">Your Cart</h1>
+        <h1 className="absolute left-1/2 -translate-x-1/2 text-gray-800 font-semibold text-lg sm:text-xl">
+          Cart
+        </h1>
+      </div>
 
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 mt-6">
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
-          {/* LEFT: Cart items */}
+          {/* LEFT:*/}
           <div className="bg-white rounded-2xl shadow-md p-4 sm:p-6">
             <h2 className="text-xl font-semibold mb-6">Cart Items</h2>
+
             {cartItems.length === 0 && (
               <p className="text-center text-gray-500 py-10">
                 Your cart is empty
               </p>
             )}
+
             <div className="space-y-6">
               {cartItems.map((item) => (
                 <div
@@ -124,7 +135,7 @@ const Cart = () => {
             </div>
           </div>
 
-          {/* RIGHT: Payment */}
+          {/* RIGHT: */}
           <div className="bg-white rounded-2xl shadow-md p-6 h-fit lg:sticky lg:top-6">
             <h2 className="text-xl font-semibold mb-6">Payment</h2>
 
@@ -150,8 +161,8 @@ const Cart = () => {
                     onClick={() => setPaymentMethod("cash")}
                     className={`px-4 py-2 rounded-lg border ${
                       paymentMethod === "cash"
-                        ? "bg-red-500 text-white border-red-500  cursor-pointer"
-                        : "bg-white text-gray-700 border-gray-300  cursor-pointer"
+                        ? "bg-red-500 text-white border-red-500 cursor-pointer"
+                        : "bg-white text-gray-700 border-gray-300 cursor-pointer"
                     }`}
                   >
                     Cash
@@ -160,8 +171,8 @@ const Cart = () => {
                     onClick={() => setPaymentMethod("online")}
                     className={`px-4 py-2 rounded-lg border ${
                       paymentMethod === "online"
-                        ? "bg-red-500 text-white border-red-500  cursor-pointer"
-                        : "bg-white text-gray-700 border-gray-300  cursor-pointer"
+                        ? "bg-red-500 text-white border-red-500 cursor-pointer"
+                        : "bg-white text-gray-700 border-gray-300 cursor-pointer"
                     }`}
                   >
                     Online

@@ -47,17 +47,21 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white shadow-sm px-4 py-3 flex items-center relative">
+      <div className="bg-white shadow-md px-6 py-4 flex items-center relative border-b border-gray-200">
+        {/* Back Button */}
         <button
           onClick={() => navigate("/")}
-          className="flex items-center gap-2 text-gray-600 hover:text-black z-10"
+          className="flex items-center gap-2 text-gray-700 hover:text-red-500 
+               bg-gray-100 hover:bg-red-50 px-3 py-2 rounded-lg 
+               transition font-medium shadow-sm"
         >
-          <FaArrowLeft />
+          <FaArrowLeft className="text-base" />
           Back
         </button>
 
-        <h1 className="absolute left-1/2 -translate-x-1/2 font-semibold text-lg">
-          My Profile
+        {/* Title */}
+        <h1 className="absolute left-1/2 -translate-x-1/2 text-gray-800 font-semibold text-lg sm:text-xl">
+          Profile
         </h1>
       </div>
 
